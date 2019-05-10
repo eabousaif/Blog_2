@@ -8,7 +8,9 @@ Migrations are an easy way of altering an existing database schema over a period
 require "active_record"
 ```
 
-Let's say we want to create a table that shows the top 10 grossing video games, year released, and total revenue. We can create that table in our terminal by typing in `rake db:migrate NAME=top_10_grossing_video_games`. Now let's take a quick step back and break down our Bash command:
-1. *rake:* an efficient way to manage database changes.
-2. *db:migrate:* when we run the migration command, it will look in the db/migrate/ file for any ruby files and execute them starting with the oldest.
-3. *NAME=top_10_grossing_video_games:* specifying the name of our file.
+Let's say we want to create a table that shows the top 10 grossing video games, year released, and total revenue. We can create that table in our terminal by typing in `rake db:create_table NAME=top_10_grossing_video_games`. Now let's take a quick step back and break down our Bash command:
+1. **rake**: an efficient way to manage database changes.
+2. **db:create_table**: the command will create a table and save it in the db/migrate/ directory.
+3. **NAME=top_10_grossing_video_games**: specifying the name of our file.
+
+Once
