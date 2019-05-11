@@ -33,7 +33,7 @@ class Top10GrossingVideoGames < ActiveRecord::Migration[5.2]
   end
 end
 ```
-Here we create a migration called *top10videogames* and we iterate over it to return its name, which would be a string, and its date of release and total revenue, which are both integers.
+Here we create a migration called *top10videogames* and we iterate over it to return its name, which would be a string, and its date of release and total revenue, which are both integers. Once we defined the columns, we generate the table by using the Bash command `rake db:migrate`
 
 ## Adding Data To Our Migrations.
 
@@ -42,7 +42,7 @@ Now that we have created our migration and defined its columns, we want to input
 ```ruby
 Videogame.create(name: "Diablo III", year_released: 2012 ,total_revenue: 30000000, rating: 9.5)
 Videogame.create(name: " Wii Sports Resort",year_released: 2009, total_revenue: 33090000, rating: 6.5)
-Videogame.create(name: "Mario Kart Wii ", year_released: 2008, total_revenue: 37140000,rating: 8.9)
+Videogame.create(name: "Mario Kart Wii ", year_released: 2008, total_revenue: 37140000, rating: 8.9)
 Videogame.create(name: "Super Mario Bros.", year_released: 1985, total_revenue: 40000000, rating: 9.0)
 Videogame.create(name: "Pokemon Red/Blue/Green/Yellow", year_released: 1996, total_revenue: 45000000, rating: 10)
 Videogame.create(name: "Playerunknown's Battlegrounds", year_released: 2017, total_revenue: 50000000, rating: 9.5)
@@ -51,3 +51,21 @@ Videogame.create(name: "Grand Theft Auto V", year_released: 2013, total_revenue:
 Videogame.create(name: "Minecraft", year_released: 2009, total_revenue: 154000000, rating: 9.0)
 Videogame.create(name: "Tetris", year_released: 1984, total_revenue: 500000000, rating: 9.0)
 ```
+Since we created some video game objects, we want to include that in our table. To do that, we use the Bash command `rake db:seed` to add the data. But wait.... we missed a field. We didn't include the video game *ratings* in our initial migration.
+
+That's the beauty of ActiveRecord, we can modify the table without affecting its integrity. To update our table and add a column, it's as easy as creating a new migration `rake db:create_migration NAME=add_ratings_to_top_10_videogames` and then adding the following code:
+
+```ruby
+class AddRatingsToTop10VideoGames < ActiveRecord::Migration[5.2]
+  def change
+    add_column :top10videogames, :ratings, :integer
+  end
+end
+```
+We run `rake db:migrate` again and our table is updated with the new column ratings.
+
+
+
+
+
+
