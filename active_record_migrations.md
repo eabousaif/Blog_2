@@ -64,6 +64,10 @@ end
 ```
 We run `rake db:migrate` again and our table is updated with the new column ratings.
 
+## ActiveRecord Recap
+
+ActiveRecord is a very powerful gem when it comes to database management and table modifications. It is very convenient to make a change or revert to a previous version of a migration. It allows us to write powerful integrated methods seamlessly without having to write any SQL methods.
+
 
 
 
